@@ -42,6 +42,8 @@ I chose 'Get started with Amplify Hosting' since I have the (frontend) and just 
 ![4](https://user-images.githubusercontent.com/66325142/214481569-27d33639-f6cd-4167-9451-a33b14efb618.png)
 
 After choosing my repo and branch, i left all other fields as default and deployed.
+![5](https://user-images.githubusercontent.com/66325142/214484145-4dcf27e2-f388-4896-a6ed-6f04d2c2d41f.png)
+
 
 ## Phase 2: User Management using Amazon Cognito
 
