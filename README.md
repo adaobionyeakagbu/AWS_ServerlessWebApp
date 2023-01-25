@@ -17,20 +17,25 @@ I then created a repository on AWS CodeCommit and set up my IAM user with Git Cr
 
 These username and password need to be copied or downloaded somewhere because they are used to connect to CodeCommit on CLI.
 Then on CodeCommit, select clone HTTPS from the Clone URL dropdown, and run the following command in CLI to clone your empty codecommit repo to your local machine:
-            $ git clone https://git-codecommit.eu-central-1.amazonaws.com/v1/repos/reponame
+
+``` $git clone https://git-codecommit.eu-central-1.amazonaws.com/v1/repos/reponame ```
+
 I was prompted to fill in my username and password.
 For the next step, I needed to install AWS on my local machine and configure my iam credentials on CLI. You can simply download AWS for CLI (I did this via my company portal). Then I generated an access key for my IAM user and filled in the credentials on CLI.
 
-       ![3](https://user-images.githubusercontent.com/66325142/214480412-9d5f811f-2f23-404c-b684-dc4a2374558e.png)
+![3](https://user-images.githubusercontent.com/66325142/214480412-9d5f811f-2f23-404c-b684-dc4a2374558e.png)
        
 To copy the wild-rydes site content from the publicly accessible s3 bucket to my local machine, i ran this command:
-            $ aws s3 cp s3://wildrydes-us-east-1/WebApplication/1_StaticWebHosting/website ./ --recursive
+
+``` $ aws s3 cp s3://wildrydes-us-east-1/WebApplication/1_StaticWebHosting/website ./ --recursive ```
+            
 Then pushed the files to my codecommit repo:
+```
             $ git add .
             $ git commit -m 'new'
             $ git push
-            
-Next up ----> AWS Amplify Console
+```
+#### Next up ----> AWS Amplify Console
 
 I chose 'Get started with Amplify Hosting' since I have the (frontend) and just need to host. 
 
