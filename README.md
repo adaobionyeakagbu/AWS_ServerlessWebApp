@@ -37,7 +37,9 @@ Then pushed the files to my codecommit repo:
 ```
 #### Next up ----> AWS Amplify Console
 
-I chose 'Get started with Amplify Hosting' since I have the (frontend) and just need to host. 
+Advantage of using Amplify to host the site is that the Amplify Console will automatically rebuild and redeploy the app when it detects changes to the connected repository.
+
+To proceed: I chose 'Get started with Amplify Hosting' since I have the (frontend) and just need to host. 
 
 ![4](https://user-images.githubusercontent.com/66325142/214481569-27d33639-f6cd-4167-9451-a33b14efb618.png)
 
@@ -46,6 +48,7 @@ After choosing my repo and branch, i left all other fields as default and deploy
 
 
 ## Phase 2: User Management using Amazon Cognito
+
 
 ## Phase 3: Build Serverless Backend using DynamoDB and AWS Lambda
 
