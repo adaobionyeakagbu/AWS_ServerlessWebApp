@@ -53,7 +53,15 @@ Amazon Cognito provides two different mechanisms for authenticating users. Cogni
 
 On the Cognito service dashboard, I clicked 'Create User Pool'
 <img width="1101" alt="Screenshot 2023-03-17 at 16 54 24" src="https://user-images.githubusercontent.com/66325142/225956153-39f9e3a4-f12e-4316-9651-47526515fbe5.png">
+There are 6 steps involved in creating the user pool. I will describe what i did in each step.
+1. Configure Sign in Experience: I left as default but selected 'User name' and 'Email' under user pool sign in options.
+2. Configure Security Requirements: Selected 'No MFA' but left others as default.
+3. Configure Sign-up Experience: I left as default.
+4. Configure Message Delivery: I selected 'Send Email with Amazon SES' and selected a FROM Email address. This email address needs to be created and verified on the SES service dashboard for it to be visible. Also extra attention has to be paid to the SES region because the region needs to correspond to the region the FROM Email was created in for it to be visible. I also configured a FROM Sender Name but this is optional.
+5. Integrate Your App: I inputed a User Pool name, and under the Initial App Client, I selected 'Public Client' and inputed an App Client Name. Everything else as default.
+6. Review and Create: Reviewed the information and Created the user pool.
 
+Open the js/config.js file on your local machine and input the pool ID, client ID and region, and then commit the updated file back to aws.
 
 ## Phase 3: Build Serverless Backend using DynamoDB and AWS Lambda
 
