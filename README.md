@@ -49,6 +49,11 @@ After choosing my repo and branch, i left all other fields as default and deploy
 
 ## Phase 2: User Management using Amazon Cognito
 
+Amazon Cognito provides two different mechanisms for authenticating users. Cognito User Pools allows to add sign-up and sign-in functionality to your application while Cognito Identity Pools allows to authenticate users through social identity providers such as Facebook, Twitter, or Amazon, with SAML identity solutions, or by using your own identity system. I used the User Pool for this exercise.
+
+On the Cognito service dashboard, I clicked 'Create User Pool'
+<img width="1101" alt="Screenshot 2023-03-17 at 16 54 24" src="https://user-images.githubusercontent.com/66325142/225956153-39f9e3a4-f12e-4316-9651-47526515fbe5.png">
+
 
 ## Phase 3: Build Serverless Backend using DynamoDB and AWS Lambda
 
