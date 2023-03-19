@@ -76,7 +76,18 @@ Users can now register on the /register.html page of the site!
 Cool thing is I can verify users on the Cognito user pool backend, comes in handy if i used a dummy email address to register.
 
 ## Phase 3: Build Serverless Backend using DynamoDB and AWS Lambda
-Next step is to implement a Lambda function that will be invoked each time a user requests a unicorn. The function will select a unicorn from the fleet, record the request in a DynamoDB table, and then respond to the frontend application with details about the unicorn being dispatched.
+Next step is to implement the Lambda function that will be invoked each time a user requests a unicorn. The function will select a unicorn from the fleet, record the request in a DynamoDB table, and then respond to the frontend application with details about the unicorn being dispatched.
+
+First, I created a DynamoDB table with name Rides and partition key RideId of type string. When the table was created, I copied its ARN.
+For a Lambda function to be performed, an IAM role needs to be defined for it. This role defines what other AWS services the function is allowed to interact with. So, I needed to create an IAM role that grants the Lambda function permission to write logs to Amazon CloudWatch Logs and access to write items to my DynamoDB table.
+
+<img width="1079" alt="Screenshot 2023-03-19 at 04 18 02" src="https://user-images.githubusercontent.com/66325142/226151750-58a50ade-db38-419e-85f6-3a5cdaedcc7c.png">
+
+Then i added the AWSLambdaBasicExecutionRole permissions policy, inputed a role name and created the Role. After the role was created, I navigated to the role's permissions page to Create Inline Policy as shown below.
+
+<img width="1260" alt="Screenshot 2023-03-19 at 04 28 52" src="https://user-images.githubusercontent.com/66325142/226152027-1c49f230-0cda-4893-9054-2ba81c543c84.png">
+
+After reviewing the policy and giving it a name, the policy was created. Basically, the role I created, along with its policies, allows lambda functions to be executed and gives the functions write access to my specified DynamoDB table. 
 
 ## Phase 4: Deploy a REST API with Amazon API Gateway and Lambda
 
