@@ -62,6 +62,9 @@ There are 6 steps involved in creating the user pool. I will describe what i did
 6. Review and Create: Reviewed the information and Created the user pool.
 
 Open the js/config.js file on your local machine and input the pool ID, client ID and region, and then commit the updated file back to aws.
+<img width="854" alt="Screenshot 2023-03-18 at 10 00 25" src="https://user-images.githubusercontent.com/66325142/226095954-afc07675-4e5d-443f-b84f-fd9352520fd9.png">
+
+Users can now register 
 
 ## Phase 3: Build Serverless Backend using DynamoDB and AWS Lambda
 
