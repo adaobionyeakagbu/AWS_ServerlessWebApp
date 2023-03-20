@@ -89,7 +89,39 @@ Then i added the AWSLambdaBasicExecutionRole permissions policy, inputed a role 
 
 After reviewing the policy and giving it a name, the policy was created. Basically, the role I created, along with its policies, allows lambda functions to be executed and gives the functions write access to my specified DynamoDB table. 
 
+Next, I created a Lambda function from scratch using source code from https://webapp.serverlessworkshops.io/serverlessbackend/lambda/requestUnicorn.js
+This function uses the Node.js 16.x version for Runtime and the existing role with necessary permissions I created. Every other setting was left as default. Caution: Watch out for the region that this function is created in, that it aligns with the role and database that you want it to write with/to.
+After deploying the code, i tested it via this test event (since the rest api gateway has not yet been configured).
+````
+{
+    "path": "/ride",
+    "httpMethod": "POST",
+    "headers": {
+        "Accept": "*/*",
+        "Authorization": "eyJraWQiOiJLTzRVMWZs",
+        "content-type": "application/json; charset=UTF-8"
+    },
+    "queryStringParameters": null,
+    "pathParameters": null,
+    "requestContext": {
+        "authorizer": {
+            "claims": {
+                "cognito:username": "the_username"
+            }
+        }
+    },
+    "body": "{\"PickupLocation\":{\"Latitude\":47.6174755835663,\"Longitude\":-122.28837066650185}}"
+}
+````
+And success!
+
+<img width="1310" alt="Screenshot 2023-03-20 at 01 39 34" src="https://user-images.githubusercontent.com/66325142/226221357-979fc3d4-0cff-4316-a9b6-5a7386e6e0be.png">
+
 ## Phase 4: Deploy a REST API with Amazon API Gateway and Lambda
+
+This is the step that ties all the components together. The static page at /ride.html has a simple map-based interface for requesting a unicorn ride. After authenticating using the /signin.html page, users will be able to select their pickup location by clicking a point on the map and then requesting a ride by choosing the "Request Unicorn" button in the upper right corner.
+The Amazon API Gateway created in this step will expose the Lambda function built in the previous phase as a RESTful API. This API will be accessible on the public Internet. It will be secured using the Amazon Cognito user pool created in the previous phases. This turns my statically hosted website into a dynamic web application by adding client-side JavaScript that makes AJAX calls to the exposed APIs.
+
 
 ## Phase 5: Terminate Resources
 
