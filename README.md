@@ -123,6 +123,8 @@ This is the step that ties all the components together. The static page at /ride
 The Amazon API Gateway created in this step will expose the Lambda function built in the previous phase as a RESTful API. This API will be accessible on the public Internet. It will be secured using the Amazon Cognito user pool created in the previous phases. This turns my statically hosted website into a dynamic web application by adding client-side JavaScript that makes AJAX calls to the exposed APIs.
 
 
+<img width="1436" alt="Screenshot 2023-03-21 at 01 11 34" src="https://user-images.githubusercontent.com/66325142/226608066-56b85baa-5711-4766-b4d5-f4e700cebb22.png">
+
 ## Phase 5: Terminate Resources
 
 This is an AWS Hands on project https://aws.amazon.com/getting-started/hands-on/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/
