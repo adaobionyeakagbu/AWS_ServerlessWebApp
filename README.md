@@ -122,9 +122,25 @@ And success!
 This is the step that ties all the components together. The static page at /ride.html has a simple map-based interface for requesting a unicorn ride. After authenticating using the /signin.html page, users will be able to select their pickup location by clicking a point on the map and then requesting a ride by choosing the "Request Unicorn" button in the upper right corner.
 The Amazon API Gateway created in this step will expose the Lambda function built in the previous phase as a RESTful API. This API will be accessible on the public Internet. It will be secured using the Amazon Cognito user pool created in the previous phases. This turns my statically hosted website into a dynamic web application by adding client-side JavaScript that makes AJAX calls to the exposed APIs.
 
+First things first, I navigated to API gateway and created my REST api, named WildRydes, with edge-optimized as the endpoint type. This is because Edge optimized are best for public services being accessed from the Internet. Regional endpoints are typically used for APIs that are accessed primarily from within the same AWS Region.
 
+Next, I created a 'ride' Resource, enabling API Gateway CORS. Under that resource, I created a POST method with Lanbda function as the integration type. Then i checked the box for Use Lambda Proxy integration. Selecting the region that i created my lambda function in, I selected my lambda function from the dropdown. Then saved the method.
+The next thing is to select the authorizer for this method. However, there is one important thing I had to do. I had to create the authorizer that controls the interaction between the user pool and the api. So, on the left side of the API explorer, i clicked on authorizer and created one, with Cognito as the type.
+
+<img width="457" alt="Screenshot 2023-03-26 at 04 47 47" src="https://user-images.githubusercontent.com/66325142/227752471-cce8cb75-90fe-491b-9c4b-e23c0b5d2cac.png">
+
+Next, I navigated back to my API POST method, to the Method Request card, and selected my new authorizer under Authorization. Then I deployed the API by creating a new stage called prod. The invoke URL was copied and updated in the config.js file, under api invoke url. Then pushed back to my repo.
+
+One thing to note is if you make any changes to the API, you'd need to redploy it to see changes. For code changes to the site, Amplify automatically deploys them.
+
+### And we're live! 
+
+This is what the unicorn request process is, after the user logs in.
 <img width="1436" alt="Screenshot 2023-03-21 at 01 11 34" src="https://user-images.githubusercontent.com/66325142/226608066-56b85baa-5711-4766-b4d5-f4e700cebb22.png">
+<img width="1436" alt="Screenshot 2023-03-26 at 04 35 43" src="https://user-images.githubusercontent.com/66325142/227752192-abd0f08c-a7ea-4a4e-8135-6993b842f9c8.png">
 
 ## Phase 5: Terminate Resources
+Unfortunately, I had to delete all deployed resources so i don't get charged too much. But I spent quite a number of days on this so charges were unavoidable. I had fun though.
+
 
 This is an AWS Hands on project https://aws.amazon.com/getting-started/hands-on/build-serverless-web-app-lambda-apigateway-s3-dynamodb-cognito/
