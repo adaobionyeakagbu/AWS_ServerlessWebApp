@@ -125,7 +125,7 @@ The Amazon API Gateway created in this step will expose the Lambda function buil
 First things first, I navigated to API gateway and created my REST api, named WildRydes, with edge-optimized as the endpoint type. This is because Edge optimized are best for public services being accessed from the Internet. Regional endpoints are typically used for APIs that are accessed primarily from within the same AWS Region.
 
 Next, I created a 'ride' Resource, enabling API Gateway CORS. Under that resource, I created a POST method with Lanbda function as the integration type. Then i checked the box for Use Lambda Proxy integration. Selecting the region that i created my lambda function in, I selected my lambda function from the dropdown. Then saved the method.
-The next thing is to select the authorizer for this method. However, there is one important thing I had to do. I had to create the authorizer that controls the interaction between the user pool and the api. So, on the left side of the API explorer, i clicked on authorizer and created one, with Cognito as the type.
+The next thing is to select the authorizer for this method. However, there is one important thing I had to do. I had to create the authorizer that controls the interaction between the user pool and the api. So, on the left side of the API explorer, i clicked on authorizer and created one, with Cognito as the type. https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-enable-cognito-user-pool.html
 
 <img width="457" alt="Screenshot 2023-03-26 at 04 47 47" src="https://user-images.githubusercontent.com/66325142/227752471-cce8cb75-90fe-491b-9c4b-e23c0b5d2cac.png">
 
